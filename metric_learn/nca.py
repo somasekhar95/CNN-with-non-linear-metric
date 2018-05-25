@@ -1,7 +1,4 @@
-"""
-Neighborhood Components Analysis (NCA)
-Ported to Python from https://github.com/vomjom/nca
-"""
+
 
 import numpy as np
 from base_metric import BaseMetricLearner
