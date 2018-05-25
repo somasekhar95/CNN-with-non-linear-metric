@@ -2,9 +2,7 @@
 Qi et al.
 An efficient sparse metric learning in high-dimensional space via
 L1-penalized log-determinant regularization.
-ICML 2009
 
-Adapted from https://gist.github.com/kcarnold/5439945
 Paper: http://lms.comp.nus.edu.sg/sites/default/files/publication-attachments/icml09-guojun.pdf
 """
 
@@ -18,14 +16,7 @@ from base_metric import BaseMetricLearner
 
 class SDML(BaseMetricLearner):
   def __init__(self, balance_param=0.5, sparsity_param=0.01, use_cov=True):
-    '''
-    balance_param: trade off between sparsity and M0 prior
-    sparsity_param: trade off between optimizer and sparseness (see graph_lasso)
-    '''
-    self.balance_param = balance_param
-    self.sparsity_param = sparsity_param
-    self.use_cov = use_cov
-
+    
   def _prepare_inputs(self, X, W):
     self.X = X
     # set up prior M
