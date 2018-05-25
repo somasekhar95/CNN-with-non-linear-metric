@@ -1,11 +1,3 @@
-"""
-Liu et al.
-"Metric Learning from Relative Comparisons by Minimizing Squared Residual".
-ICDM 2012.
-
-Adapted from https://gist.github.com/kcarnold/5439917
-Paper: http://www.cs.ucla.edu/~weiwang/paper/ICDM12.pdf
-"""
 
 from random import choice
 import numpy as np
@@ -36,13 +28,7 @@ class LSML(BaseMetricLearner):
     return self.M
 
   def fit(self, X, constraints, weights=None, prior=None, verbose=False):
-    """
-    X: data matrix, (n x d)
-    constraints: (m x 4) matrix of (a,b,c,d) indices into X, such that:
-      d(X[a],X[b]) < d(X[c],X[d])
-    weights: m-length array of weights on each constraint
-    prior: guess at a metric matrix [default: covariance(X)]
-    """
+    
     self._prepare_inputs(X, constraints, weights, prior)
     prior_inv = scipy.linalg.inv(self.M)
     s_best = self._total_loss(self.M, prior_inv)
