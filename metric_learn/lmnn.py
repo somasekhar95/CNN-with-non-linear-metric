@@ -1,8 +1,4 @@
-"""
-Large-margin nearest neighbor metric learning. (Weinberger 2005)
 
-TODO: periodic recalculation of impostors, PCA initialization
-"""
 
 import numpy as np
 from collections import Counter
@@ -19,15 +15,8 @@ class _base_LMNN(BaseMetricLearner):
     return self.L
 
 
-# slower Python version
 class python_LMNN(_base_LMNN):
-  """
-   LMNN Learns a metric using large-margin nearest neighbor metric learning.
-     LMNN(X, labels, k).fit()
-   Learn a metric on X (NxD matrix) and labels (Nx1 vector).
-   k: number of neighbors to consider, (does not include self-edges)
-   regularization: weighting of pull and push terms
-  """
+  
   def __init__(self, k=3, min_iter=50, max_iter=1000, learn_rate=1e-7,
                regularization=0.5, convergence_tol=0.001):
     _base_LMNN.__init__(self, k=k, min_iter=min_iter, max_iter=max_iter,
