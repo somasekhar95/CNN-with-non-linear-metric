@@ -1,6 +1,4 @@
-"""
-Information Theoretic Metric Learning, Kulis et al., ICML 2007
-"""
+
 
 import numpy as np
 from sklearn.metrics import pairwise_distances
@@ -41,15 +39,6 @@ class ITML(BaseMetricLearner):
     return a,b,c,d
 
   def fit(self, X, constraints, bounds=None, A0=None, verbose=False):
-    """
-    X: (n x d) data matrix - each row corresponds to a single instance
-    constraints: tuple of arrays: (a,b,c,d) indices into X, such that:
-      d(X[a],X[b]) < d(X[c],X[d])
-    bounds: (pos,neg) pair of bounds on similarity, such that:
-      d(X[a],X[b]) < pos
-      d(X[c],X[d]) > neg
-    A0: [optional] (d x d) initial regularization matrix, defaults to identity
-    """
     a,b,c,d = self._process_inputs(X, constraints, bounds, A0)
     gamma = self.gamma
     num_pos = len(a)
